@@ -1,0 +1,15 @@
+type Employee {
+  id: ID
+  firstName: String @fake(type: firstName, locale: tr)
+  lastName: String @fake(type: lastName, locale: tr)
+  email: String @fake(type: email, locale: tr)
+  address: String @fake(type: streetAddress, locale: tr, options: { useFullAddress: true })
+  phone: String @fake(type: phoneNumber, locale: tr)
+  image: String @fake(type: imageUrl, options: { randomizeImageUrl: true })
+  points: Int
+}
+
+type Query {
+  employee(id: ID): Employee
+  employees: [Employee!] @listLength(min: 10, max: 200)
+}

@@ -1,0 +1,57 @@
+:root {
+  --bg-color: #181717;
+  --container-spacing: 14%;
+  --primary-text-color: #fff5f0;
+  --secondary-text-color: #afafaf;
+  --link-color: #f5a525;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color-scheme: dark;
+  background-color: var(--bg-color);
+  color: var(--primary-text-color);
+  margin: 0;
+  padding: 0;
+  background-image: url(/background.svg);
+  background-size: cover;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 80px var(--container-spacing) 40px var(--container-spacing);
+  flex: 1;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--secondary-text-color);
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --container-spacing: 8%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --container-spacing: 4%;
+  }
+}
