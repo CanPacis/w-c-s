@@ -16,7 +16,7 @@ export type EmployeeDetailDTO = EmployeeDTO & {
   address: string;
 };
 
-export interface EmployeesState {
+export type EmployeesState = {
   value: EmployeeDTO[];
 }
 

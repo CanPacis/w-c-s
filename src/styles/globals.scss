@@ -7,7 +7,13 @@
   --primary-color: #f5a525;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
@@ -45,6 +51,17 @@ main {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
+  color: var(--secondary-text-color);
+  text-transform: uppercase;
+  font-weight: 300;
+  height: 100%;
 }
 
 @media screen and (max-width: 1080px) {

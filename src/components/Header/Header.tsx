@@ -7,10 +7,13 @@ const poppins = Poppins({ weight: ["900"], subsets: ["latin"] });
 
 export function Header() {
   return (
-    <header className={clsx(style.header, poppins.className)}>
+    <header className={style.header}>
       <Link href="/">
-        <span className={style.logo}>Vote!</span>
+        <span className={clsx(style.logo, poppins.className)}>Vote!</span>
       </Link>
+      <nav>
+        <Link href="/logs">Logs</Link>
+      </nav>
     </header>
   );
 }

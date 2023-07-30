@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  background-color: rgba(200, 200, 200, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--secondary-bg-color);
+  border-radius: 20px;
+  padding: 1.4rem 1.2rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    color: var(--secondary-text-color);
+    
+    .title {
+      color: var(--primary-text-color);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      text-transform: capitalize;
+    }
+  }
+}

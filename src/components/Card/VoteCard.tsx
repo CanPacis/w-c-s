@@ -8,6 +8,7 @@ import { EmployeeDTO, voteEmployee } from "@/data/employeesSlice";
 import { useDispatch } from "react-redux";
 import { getCssVar } from "@/util/misc";
 import Link from "next/link";
+import { createLog, pushLog } from "@/data/logsSlice";
 
 export function Card({ data }: { data: EmployeeDTO }) {
   const voteLabel = data.voteCount === 1 ? "vote" : "votes";
@@ -62,6 +63,7 @@ export function VotingStars({ value, id }: { value: number; id: string }) {
 
   const handleClick = (index: number) => {
     dispatch(voteEmployee({ id, vote: index + 1 }));
+    dispatch(pushLog(createLog("vote", { id, vote: index + 1 })));
   };
 
   const isHighlighted = (index: number) => {

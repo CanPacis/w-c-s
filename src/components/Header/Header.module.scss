@@ -8,9 +8,20 @@
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 var(--container-spacing);
-}
 
-.logo {
-  font-size: 26px;
+  .logo {
+    font-size: 26px;
+  }
+
+  nav {
+    a {
+      font-size: 0.8rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
