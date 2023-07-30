@@ -10,9 +10,7 @@ export function SplashText({
 }) {
   return (
     <div className={style.wrapper}>
-      <p data-content={children} className={style.content}>
-        {children}
-      </p>
+      <p className={style.content}>{children}</p>
       {icon}
     </div>
   );

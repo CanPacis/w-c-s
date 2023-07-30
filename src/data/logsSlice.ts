@@ -44,7 +44,7 @@ function isDuplicate(logs: Log[], log: Log) {
 
   const lastLog = logs.at(-1);
 
-  if (logs.length > 0 && lastLog && log.timestamp - lastLog.timestamp < 500) {
+  if (logs.length > 0 && lastLog && log.timestamp - lastLog.timestamp < 20) {
     return true;
   }
 

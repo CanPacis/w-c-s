@@ -5,8 +5,9 @@ type Employee {
   email: String @fake(type: email, locale: tr)
   address: String @fake(type: streetAddress, locale: tr, options: { useFullAddress: true })
   phone: String @fake(type: phoneNumber, locale: tr)
-  image: String @fake(type: imageUrl, options: { randomizeImageUrl: true })
-  points: Int
+  image: String @fake(type: imageUrl)
+  points: Float @fake(type: number, options: { minNumber: 3, maxNumber: 5 })
+  voteCount: Int @fake(type: number, options: { minNumber: 0, maxNumber: 100 })
 }
 
 type Query {

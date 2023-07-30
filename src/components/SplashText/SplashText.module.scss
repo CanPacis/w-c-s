@@ -14,19 +14,7 @@
     position: relative;
     z-index: 1;
     word-break: break-word;
-
-    &::after {
-      font-size: inherit;
-      word-break: inherit;
-      content: attr(data-content);
-      display: block;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      color: var(--primary-color);
-      z-index: -1;
-      opacity: 0.6;
-    }
+    text-shadow: 2px 2px 0px rgba(245, 165, 37, 0.6);
   }
 }
 
