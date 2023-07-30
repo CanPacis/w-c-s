@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import style from "./Card.module.scss";
+import style from "./VoteCard.module.scss";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { Star } from "tabler-icons-react";
@@ -47,7 +47,7 @@ export function Card({ data }: { data: EmployeeDTO }) {
 
 const MAX_STARS = 5;
 
-function VotingStars({ value, id }: { value: number; id: string }) {
+export function VotingStars({ value, id }: { value: number; id: string }) {
   const orange = getCssVar("--primary-color");
   const dispatch = useDispatch();
   const [mouseOverIndex, setMouseOverIndex] = useState<number | null>(null);

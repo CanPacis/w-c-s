@@ -1,19 +1,26 @@
+import { ProfileCard } from "@/components/Card/ProfileCard";
 import { Header } from "@/components/Header/Header";
+import { SplashText } from "@/components/SplashText/SplashText";
 import client from "@/data/apollo-client";
 import { EmployeeDetailDTO } from "@/data/employeesSlice";
 import { gql } from "@apollo/client";
+import { Users} from "tabler-icons-react";
 
-export default function EmployeePage({ employee }: { employee: EmployeeDetailDTO }) {
-  console.log(employee)
-
+export default function EmployeePage({
+  employee,
+}: {
+  employee: EmployeeDetailDTO;
+}) {
   return (
     <>
       <Header />
       <main>
-        <div>
-          <p>{employee.firstName} {employee.lastName}</p>
-          <p>{employee.email}</p>
-        </div>
+        <SplashText icon={<Users size={80} stroke="#f5a525" strokeWidth={1.5} />}>
+          {`Employees are the backbone of any successful corporation, as their
+          dedication, skills, and contributions drive the organization's
+          growth and prosperity. Here is ${employee.firstName} ${employee.lastName}`}
+        </SplashText>
+        <ProfileCard employee={employee} />
       </main>
     </>
   );

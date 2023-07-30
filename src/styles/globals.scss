@@ -1,5 +1,6 @@
 :root {
-  --bg-color: #181717;
+  --primary-bg-color: #181717;
+  --secondary-bg-color: #404040;
   --container-spacing: 14%;
   --primary-text-color: #fff5f0;
   --secondary-text-color: #c8c8c8;
@@ -22,7 +23,7 @@ p, h1, h2, h3, h4, h5, h6 {
 html,
 body {
   color-scheme: dark;
-  background-color: var(--bg-color);
+  background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
   margin: 0;
   padding: 0;
@@ -37,7 +38,7 @@ body {
 }
 
 main {
-  margin: 90px var(--container-spacing) 40px var(--container-spacing);
+  margin: 80px var(--container-spacing) 40px var(--container-spacing);
   flex: 1;
 }
 

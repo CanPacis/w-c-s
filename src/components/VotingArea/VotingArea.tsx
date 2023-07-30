@@ -1,5 +1,5 @@
 import style from "./VotingArea.module.scss";
-import { Card } from "@/components/Card/Card";
+import { Card } from "@/components/Card/VoteCard";
 import { useSelector } from "react-redux";
 import { RootState } from "@/data/store";
 export function VotingArea() {
