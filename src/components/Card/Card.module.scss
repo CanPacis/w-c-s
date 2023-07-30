@@ -42,6 +42,14 @@
       .subtitle {
         color: var(--secondary-text-color);
       }
+
+      .email {
+        color: var(--secondary-text-color);
+        font-size: 0.8rem;
+        max-width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 

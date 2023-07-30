@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .content {
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 2rem 0;
+    max-width: 80%;
+    color: var(--primary-text-color);
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+    word-break: break-word;
+
+    &::after {
+      font-size: inherit;
+      word-break: inherit;
+      content: attr(data-content);
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      color: var(--primary-color);
+      z-index: -1;
+      opacity: 0.6;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    .content {
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,24 +1,41 @@
 /* eslint-disable @next/next/no-img-element */
-import { motion } from "framer-motion";
 import style from "./Card.module.scss";
 import clsx from "clsx";
-import { Star, StarHalf } from "tabler-icons-react";
-import { EmployeeDTO } from "@/data/data";
+import { motion } from "framer-motion";
+import { Star } from "tabler-icons-react";
+import { useState } from "react";
+import { EmployeeDTO, voteEmployee } from "@/data/employeesSlice";
+import { useDispatch } from "react-redux";
+import { getCssVar } from "@/util/misc";
+import Link from "next/link";
 
 export function Card({ data }: { data: EmployeeDTO }) {
+  const voteLabel = data.voteCount === 1 ? "vote" : "votes";
+
   return (
     <motion.div whileHover={{ scale: 1.05 }} className={style.wrapper}>
       <div className={style.card}>
         <img className={style.image} alt="employee image" src={data.image} />
         <div className={style.content}>
           <div className={style.meta}>
-            <p className={style.name}>
-              {data.firstName} {data.lastName}
-            </p>
-            <p className={style.subtitle}>124 votes • {data.points}/5</p>
+            <Link href={`/employee/${data.id}`}>
+              <p className={style.name}>
+                {data.firstName} {data.lastName}
+              </p>
+            </Link>
+            <Link href={`/employee/${data.id}`}>
+              <p className={style.subtitle}>
+                {data.voteCount} {voteLabel} • {data.points.toFixed(1)}/5
+              </p>
+            </Link>
+            <Link href={`/employee/${data.id}`}>
+              <p title={data.email} className={style.email}>
+                {data.email}
+              </p>
+            </Link>
           </div>
           <div>
-            <VotingStars value={data.points} />
+            <VotingStars id={data.id} value={data.points} />
           </div>
         </div>
       </div>
@@ -30,15 +47,67 @@ export function Card({ data }: { data: EmployeeDTO }) {
 
 const MAX_STARS = 5;
 
-function VotingStars({ value }: { value: number }) {
+function VotingStars({ value, id }: { value: number; id: string }) {
+  const orange = getCssVar("--primary-color");
+  const dispatch = useDispatch();
+  const [mouseOverIndex, setMouseOverIndex] = useState<number | null>(null);
+
+  const handleMouseOver = (index: number) => {
+    setMouseOverIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setMouseOverIndex(null);
+  };
+
+  const handleClick = (index: number) => {
+    dispatch(voteEmployee({ id, vote: index + 1 }));
+  };
+
+  const isHighlighted = (index: number) => {
+    if (mouseOverIndex === null) {
+      return false;
+    }
+
+    return mouseOverIndex >= index;
+  };
+
   return (
     <div className={style.stars}>
       {Array.from({ length: MAX_STARS }).map((_, index) => {
         if (index < Math.round(value)) {
-          return <Star key={index} fill="white" />;
+          return (
+            <motion.span
+              onClick={() => handleClick(index)}
+              onMouseLeave={handleMouseLeave}
+              onMouseOver={() => handleMouseOver(index)}
+              whileHover={{ scale: 1.1 }}
+              key={index}
+              title={`Vote ${index + 1} points`}
+            >
+              <Star
+                fill={isHighlighted(index) ? orange : "white"}
+                stroke={isHighlighted(index) ? orange : "white"}
+              />
+            </motion.span>
+          );
         }
 
-        return <Star key={index} />;
+        return (
+          <motion.span
+            onClick={() => handleClick(index)}
+            onMouseLeave={handleMouseLeave}
+            onMouseOver={() => handleMouseOver(index)}
+            whileHover={{ scale: 1.1 }}
+            key={index}
+            title={`Vote ${index + 1} points`}
+          >
+            <Star
+              fill={isHighlighted(index) ? orange : "transparent"}
+              stroke={isHighlighted(index) ? orange : "white"}
+            />
+          </motion.span>
+        );
       })}
     </div>
   );

@@ -1,7 +1,10 @@
-import { EmployeeDTO } from "@/data/data";
 import style from "./VotingArea.module.scss";
 import { Card } from "@/components/Card/Card";
-export function VotingArea({ employees }: { employees: EmployeeDTO[] }) {
+import { useSelector } from "react-redux";
+import { RootState } from "@/data/store";
+export function VotingArea() {
+  const employees = useSelector((state: RootState) => state.employees.value);
+
   return (
     <div className={style.wrapper}>
       {employees.map((employee) => (
