@@ -1,18 +1,12 @@
+import { EmployeeDTO } from "@/data/data";
 import style from "./VotingArea.module.scss";
 import { Card } from "@/components/Card/Card";
-
-export function VotingArea() {
+export function VotingArea({ employees }: { employees: EmployeeDTO[] }) {
   return (
     <div className={style.wrapper}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {employees.map((employee) => (
+        <Card key={employee.id} data={employee} />
+      ))}
     </div>
   );
 }

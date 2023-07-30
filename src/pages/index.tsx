@@ -3,10 +3,15 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 import { VotingArea } from "@/components/VotingArea/VotingArea";
+import { gql } from "@apollo/client";
+import client from "@/data/apollo-client";
+import { EmployeeDTO } from "@/data/data";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ employees }: { employees: EmployeeDTO[] }) {
+  console.log(employees)
+
   return (
     <>
       <Head>
@@ -24,10 +29,31 @@ export default function Home() {
             molestiae aut quia quae quam quasi ipsa quos saepe dolores quaerat
             nisi!
           </p>
-          <VotingArea />
+          <VotingArea employees={employees} />
         </main>
         <Footer />
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Employees {
+        employees {
+          id
+          firstName
+          lastName
+          email
+          points
+          image
+        }
+      }
+    `,
+  });
+
+  return {
+    props: { employees: data.employees },
+  };
 }

@@ -2,12 +2,21 @@
   --bg-color: #181717;
   --container-spacing: 14%;
   --primary-text-color: #fff5f0;
-  --secondary-text-color: #afafaf;
+  --secondary-text-color: #c8c8c8;
   --link-color: #f5a525;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+*::selection {
+  background-color: var(--link-color);
+  color: var(--primary-text-color);
 }
 
 html,
@@ -18,7 +27,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url(/background.svg);
-  background-size: cover;
+  background-size: contain;
 }
 
 #app {
@@ -28,7 +37,7 @@ body {
 }
 
 main {
-  margin: 80px var(--container-spacing) 40px var(--container-spacing);
+  margin: 90px var(--container-spacing) 40px var(--container-spacing);
   flex: 1;
 }
 
@@ -44,7 +53,7 @@ a {
   line-height: 1.4;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1080px) {
   :root {
     --container-spacing: 8%;
   }
